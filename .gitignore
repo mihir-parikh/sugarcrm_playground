@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -41,3 +42,71 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/nbproject/private/
+
+# Ignore custom .htaccess stuff.
+/.htaccess
+
+# Ignore the cache directory completely.
+# This will break the current behaviour. Which was often leading to
+# the misuse of the repository as backup replacement.
+# For development the cache directory can be safely ignored and
+# therefore it is ignored.
+/cache/*
+
+# Ignore some files and directories from the custom directory.
+/custom/history/*
+/custom/modulebuilder/*
+/custom/working/*
+/custom/modules/*/Ext/
+/custom/application/Ext/*
+
+# Custom configuration should also be ignored.
+/config.php
+/config_override.php
+
+# The silent upgrade scripts aren't needed.
+/silentUpgrade*.php
+
+# Logs files can safely be ignored.
+*.log
+
+# Ignore the new upload directories.
+/upload/
+/upload_backup/
+
+## IDE specific items
+# Eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+# IntelliJ Idea
+*.iml
+*.ipr
+*.iws
+.idea/
+# NetBeans
+nbproject/
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
