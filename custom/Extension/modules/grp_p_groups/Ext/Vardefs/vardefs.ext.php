@@ -51,5 +51,12 @@ $dictionary["grp_p_groups"]["fields"]["group_address_country"]["vname"] = "LBL_G
 $dictionary["grp_p_groups"]["fields"]["group_address_country"]["type"] = "varchar";
 $dictionary["grp_p_groups"]["fields"]["group_address_country"]["group"] = "group_address";
 $dictionary["grp_p_groups"]["fields"]["group_address_country"]["comment"] = "Country for group address";
-?>
 
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["name"] = "phone_group";
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["vname"] = "LBL_GROUP_PHONE";
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["type"] = "phone";
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["dbType"] = "varchar";
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["len"] = "100";
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["audited"] = "true";
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["comment"] = 'Group phone number of the contact';
+?>
