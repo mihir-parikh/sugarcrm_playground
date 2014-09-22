@@ -67,4 +67,15 @@ $dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["dbType"] = "varc
 $dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["len"] = "100";
 $dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["audited"] = "true";
 $dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["comment"] = 'Group phone number extension';
+
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["name"] = "group_phone_complete";
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["vname"] = "LBL_GROUP_PHONE_COMPLETE";
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["type"] = "phone";
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["fields"] = 
+        array(0 => "group_phone_extension", 1 => "phone_group");
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["source"] = "non-db";
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["len"] = "200";
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["db_concat_fields"] = 
+        array(0 => "group_phone_extension", 1 => "phone_group");
+$dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["studio"] = array("listview" => false);
 ?>
