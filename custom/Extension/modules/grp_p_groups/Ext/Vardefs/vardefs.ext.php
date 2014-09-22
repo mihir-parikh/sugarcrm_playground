@@ -58,5 +58,13 @@ $dictionary["grp_p_groups"]["fields"]["phone_group"]["type"] = "phone";
 $dictionary["grp_p_groups"]["fields"]["phone_group"]["dbType"] = "varchar";
 $dictionary["grp_p_groups"]["fields"]["phone_group"]["len"] = "100";
 $dictionary["grp_p_groups"]["fields"]["phone_group"]["audited"] = "true";
-$dictionary["grp_p_groups"]["fields"]["phone_group"]["comment"] = 'Group phone number of the contact';
+$dictionary["grp_p_groups"]["fields"]["phone_group"]["comment"] = 'Group phone number';
+
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["name"] = "group_phone_extension";
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["vname"] = "LBL_GROUP_PHONE_EXTENSION";
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["type"] = "phone";
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["dbType"] = "varchar";
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["len"] = "100";
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["audited"] = "true";
+$dictionary["grp_p_groups"]["fields"]["group_phone_extension"]["comment"] = 'Group phone number extension';
 ?>
