@@ -78,4 +78,20 @@ $dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["len"] = "200";
 $dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["db_concat_fields"] = 
         array(0 => "group_phone_extension", 1 => "phone_group");
 $dictionary["grp_p_groups"]["fields"]["group_phone_complete"]["studio"] = array("listview" => false);
+
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["lhs_module"] = "grp_p_groups";
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["lhs_table"] = "grp_p_groups";
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["lhs_key"] = "id";
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["rhs_module"] = "Contacts";
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["rhs_table"] = "contacts";
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["rhs_key"] = "group_id";
+$dictionary["grp_p_groups"]["relationships"]["group_contacts"]["relationship_type"] = 'one-to-many';
+
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["lhs_module"] = "grp_p_groups";
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["lhs_table"] = "grp_p_groups";
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["lhs_key"] = "id";
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["rhs_module"] = "Accounts";
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["rhs_table"] = "accounts";
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["rhs_key"] = "group_id";
+$dictionary["grp_p_groups"]["relationships"]["group_account"]["relationship_type"] = 'one-to-one';
 ?>
