@@ -160,6 +160,12 @@ array (
         array (
           0 => 
           array (
+            'name' => 'weather_info_c',
+            'studio' => 'visible',
+            'label' => 'LBL_WEATHER_INFO',
+          ),
+          1 => 
+          array (
             'name' => 'email1',
             'studio' => 'false',
             'label' => 'LBL_EMAIL_ADDRESS',
