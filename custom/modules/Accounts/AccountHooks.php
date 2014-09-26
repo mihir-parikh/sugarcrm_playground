@@ -33,4 +33,22 @@ class AccountHooks {
         $mail->AddAddress("test@test.com");
         @$mail->Send();
     }
+    
+    public function relate_contacts_city($bean, $event, $arguments){        
+        //Find contacts in the same city
+        
+        if(empty($bean->fetched_row["id"])){
+            if(!empty($bean->billing_address_city)){
+                $contacts_bean = BeanFactory::getBean("Contacts");
+                $contacts = $contacts_bean->get_full_list('',"contacts.primary_address_city = '$bean->billing_address_city'");        
+
+                if($contacts != NULL){
+                    $bean->load_relationship("contacts");
+                    foreach($contacts as $contact){
+                        $bean->contacts->add($contact->id);
+                    }
+                }
+            }
+        }
+    }
 }

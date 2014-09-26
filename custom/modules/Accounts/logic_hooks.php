@@ -9,6 +9,7 @@ $hook_array['after_ui_frame'][] = Array(1, 'Accounts InsideView frame', 'modules
 
 $hook_array["before_save"] = Array();
 $hook_array["before_save"][] = Array(1, "Check web address changes", "custom/modules/Accounts/AccountHooks.php", "AccountHooks", "check_web_address");
+$hook_array["before_save"][] = Array(2, "Relate contacts in same city", "custom/modules/Accounts/AccountHooks.php", "AccountHooks", "relate_contacts_city");
 
 //$hook_array["before_delete"] = Array();
 //$hook_array["before_delete"][] = Array(1, "Notify the manager on delete", "custom/modules/Accounts/AccountHooks.php", "AccountHooks", "notify_on_delete");
