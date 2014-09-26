@@ -11,6 +11,6 @@ $hook_array["before_save"][] = Array(2, "Combine name fields", "custom/modules/C
 $hook_array['after_ui_frame'] = Array(); 
 $hook_array['after_ui_frame'][] = Array(1, 'Contacts InsideView frame', 'modules/Connectors/connectors/sources/ext/rest/insideview/InsideViewLogicHook.php','InsideViewLogicHook', 'showFrame'); 
 
-
-
+//$hook_array['after_retrieve'] = Array(); 
+//$hook_array['after_retrieve'][] = Array(1, 'Update weather information before retrieval', "custom/modules/Contacts/ContactHooks.php", "ContactHooks", "fetch_weather_info");
 ?>
