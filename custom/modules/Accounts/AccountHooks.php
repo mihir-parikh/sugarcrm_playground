@@ -51,4 +51,16 @@ class AccountHooks {
             }
         }
     }
+    
+    public function assign_contacts_same_user($bean, $event, $arguments){
+        //Assigned to new user        
+        if($bean->assigned_user_id !== $bean->fetched_row["assigned_user_id"]){
+            $bean->load_relationship("contacts");
+            
+            foreach($bean->contacts->getBeans() as $contact){
+                $contact->assigned_user_id = $bean->assigned_user_id;
+                $contact->save();
+            }
+        }        
+    }
 }
