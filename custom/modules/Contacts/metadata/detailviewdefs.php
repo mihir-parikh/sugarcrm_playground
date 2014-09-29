@@ -84,6 +84,11 @@ array (
             'name' => 'full_name',
             'label' => 'LBL_NAME',
           ),
+          1 => 
+          array (
+            'name' => 'account_city_c',
+            'label' => 'LBL_ACCOUNT_CITY',
+          ),
         ),
         1 => 
         array (
