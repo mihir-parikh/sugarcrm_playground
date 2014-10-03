@@ -19,6 +19,6 @@ class CustomContactsController extends SugarController {
     }
     
     public function action_CustomViewTempContacts(){
-        $this->view = "CustomViewTempContacts";
+        $this->view = "CustomViewTempContacts";        
     }
 }
