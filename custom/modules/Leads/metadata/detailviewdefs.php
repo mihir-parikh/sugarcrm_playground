@@ -61,7 +61,7 @@ $viewdefs['Leads']['DetailView'] = array(
                 ),*/
                 array(
                     "customCode" => '<input type="button" value="Log an autonote" class="button" '
-                    . 'onClick="document.location=\'index.php?module=Leads&action=log_autonote&record={$fields.id.value}"'
+                    . 'onClick="document.location=\'index.php?module=Leads&action=log_autonote&record={$fields.id.value}\'"'
                     . 'name="log_autonote" id="log_autonote" />'                    
                 ),
                 'FIND_DUPLICATES',
