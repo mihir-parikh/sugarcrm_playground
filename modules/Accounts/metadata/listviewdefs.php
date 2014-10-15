@@ -45,7 +45,7 @@ array (
     'width' => '20%',
     'label' => 'LBL_LIST_ACCOUNT_NAME',
     'link' => true,
-    'default' => true,
+    'default' => true      
   ),
   'BILLING_ADDRESS_CITY' => 
   array (

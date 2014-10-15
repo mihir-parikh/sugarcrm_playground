@@ -67,6 +67,7 @@ $viewdefs['Accounts']['DetailView'] = array(
                         array(
                         ),
                     ),
+                    'customCode' => '<span style="background: yellow">{$fields.name.value}</span>'
                 ),
                 array(
                     'name' => 'phone_office',
