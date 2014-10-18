@@ -42,8 +42,8 @@ $viewdefs['Leads']['DetailView'] = array(
                 'EDIT',
                 'DUPLICATE',
                 'DELETE',
-                /*array(
-                    'customCode' => '{if $bean->aclAccess("edit") && !$DISABLE_CONVERT_ACTION}<input title="{$MOD.LBL_CONVERTLEAD_TITLE}" accessKey="{$MOD.LBL_CONVERTLEAD_BUTTON_KEY}" type="button" class="button" onClick="document.location=\'index.php?module=Leads&action=ConvertLead&record={$fields.id.value}\'" name="convert" value="{$MOD.LBL_CONVERTLEAD}">{/if}',
+                array(
+                    'customCode' => '{if $bean->status=="Assigned" && $bean->aclAccess("edit") && !$DISABLE_CONVERT_ACTION}<input title="{$MOD.LBL_CONVERTLEAD_TITLE}" accessKey="{$MOD.LBL_CONVERTLEAD_BUTTON_KEY}" type="button" class="button" onClick="document.location=\'index.php?module=Leads&action=ConvertLead&record={$fields.id.value}\'" name="convert" value="{$MOD.LBL_CONVERTLEAD}">{/if}',
                     //Bug#51778: The custom code will be replaced with sugar_html. customCode will be deplicated.
                     'sugar_html' => array(
                         'type' => 'button',
@@ -56,9 +56,9 @@ $viewdefs['Leads']['DetailView'] = array(
                             'name' => 'convert',
                             'id' => 'convert_lead_button',
                         ),
-                        'template' => '{if $bean->aclAccess("edit") && !$DISABLE_CONVERT_ACTION}[CONTENT]{/if}',
+                        'template' => '{if $bean->status=="Assigned" && $bean->aclAccess("edit") && !$DISABLE_CONVERT_ACTION}[CONTENT]{/if}',
                     ),
-                ),*/
+                ),
                 array(
                     "customCode" => '<input type="button" value="Log an autonote" class="button" '
                     . 'onClick="document.location=\'index.php?module=Leads&action=log_autonote&record={$fields.id.value}\'"'
