@@ -13,7 +13,12 @@ array (
           1 => 'DUPLICATE',
           2 => 'DELETE',
           3 => 'FIND_DUPLICATES',
-          4 => 
+          4 => array(
+              "customCode" => '<input type="button" class="button" title="Schedule follow up" '
+              . 'value="Schedule follow up" onclick="document.location=\'index.php?module=Contacts&action=schedule_followup&record={$fields.id.value}\'" '
+              . 'name="schedule_followup" id="schedule_followup"/>'
+          ),  
+          5 => 
           array (
             'customCode' => '<input type="submit" class="button" title="{$APP.LBL_MANAGE_SUBSCRIPTIONS}" onclick="this.form.return_module.value=\'Contacts\'; this.form.return_action.value=\'DetailView\'; this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Subscriptions\'; this.form.module.value=\'Campaigns\'; this.form.module_tab.value=\'Contacts\';" name="Manage Subscriptions" value="{$APP.LBL_MANAGE_SUBSCRIPTIONS}"/>',
             'sugar_html' => 
