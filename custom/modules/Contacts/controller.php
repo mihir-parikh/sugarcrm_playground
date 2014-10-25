@@ -37,6 +37,10 @@ class CustomContactsController extends SugarController {
         $calls_bean->duration_minutes = 30;
         $calls_bean->save();
         
+        //Create a relationship
+        $this->bean->load_relationship("calls");
+        $this->bean->calls->add($calls_bean->id);
+        
         SugarApplication::redirect("index.php?module=Contacts&action=DetailView&record=".$this->bean->id);
     }
 }
