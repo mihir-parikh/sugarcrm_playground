@@ -1,39 +1,19 @@
 <?php
 $viewdefs ['Contacts'] = 
 array (
-  'DetailView' => 
+  'EditView' => 
   array (
     'templateMeta' => 
     array (
       'form' => 
       array (
-        'buttons' => 
+        'hidden' => 
         array (
-          0 => 'EDIT',
-          1 => 'DUPLICATE',
-          2 => 'DELETE',
-          3 => 'FIND_DUPLICATES',
-          4 => 
-          array (
-            'customCode' => '<input type="button" class="button" title="Schedule follow up" value="Schedule follow up" onclick="document.location=\'index.php?module=Contacts&action=schedule_followup&record={$fields.id.value}\'" name="schedule_followup" id="schedule_followup"/>',
-          ),
-          5 => 
-          array (
-            'customCode' => '<input type="submit" class="button" title="{$APP.LBL_MANAGE_SUBSCRIPTIONS}" onclick="this.form.return_module.value=\'Contacts\'; this.form.return_action.value=\'DetailView\'; this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Subscriptions\'; this.form.module.value=\'Campaigns\'; this.form.module_tab.value=\'Contacts\';" name="Manage Subscriptions" value="{$APP.LBL_MANAGE_SUBSCRIPTIONS}"/>',
-            'sugar_html' => 
-            array (
-              'type' => 'submit',
-              'value' => '{$APP.LBL_MANAGE_SUBSCRIPTIONS}',
-              'htmlOptions' => 
-              array (
-                'class' => 'button',
-                'id' => 'manage_subscriptions_button',
-                'title' => '{$APP.LBL_MANAGE_SUBSCRIPTIONS}',
-                'onclick' => 'this.form.return_module.value=\'Contacts\'; this.form.return_action.value=\'DetailView\'; this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Subscriptions\'; this.form.module.value=\'Campaigns\'; this.form.module_tab.value=\'Contacts\';',
-                'name' => 'Manage Subscriptions',
-              ),
-            ),
-          ),
+          0 => '<input type="hidden" name="opportunity_id" value="{$smarty.request.opportunity_id}">',
+          1 => '<input type="hidden" name="case_id" value="{$smarty.request.case_id}">',
+          2 => '<input type="hidden" name="bug_id" value="{$smarty.request.bug_id}">',
+          3 => '<input type="hidden" name="email_id" value="{$smarty.request.email_id}">',
+          4 => '<input type="hidden" name="inbound_email_id" value="{$smarty.request.inbound_email_id}">',
         ),
       ),
       'maxColumns' => '2',
@@ -48,13 +28,6 @@ array (
         array (
           'label' => '10',
           'field' => '30',
-        ),
-      ),
-      'includes' => 
-      array (
-        0 => 
-        array (
-          'file' => 'modules/Leads/Lead.js',
         ),
       ),
       'useTabs' => false,
@@ -85,16 +58,24 @@ array (
         array (
           0 => 
           array (
-            'name' => 'full_name',
-            'label' => 'LBL_NAME',
-          ),
-          1 => 
-          array (
-            'name' => 'account_city_c',
-            'label' => 'LBL_ACCOUNT_CITY',
+            'name' => 'first_name',
+            'customCode' => '{html_options name="salutation" id="salutation" options=$fields.salutation.options selected=$fields.salutation.value}&nbsp;<input name="first_name"  id="first_name" size="25" maxlength="25" type="text" value="{$fields.first_name.value}">',
           ),
         ),
         1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'last_name',
+          ),
+          1 => 
+          array (
+            'name' => 'phone_work',
+            'comment' => 'Work phone number of the contact',
+            'label' => 'LBL_OFFICE_PHONE',
+          ),
+        ),
+        2 => 
         array (
           0 => 
           array (
@@ -104,20 +85,8 @@ array (
           ),
           1 => 
           array (
-            'name' => 'phone_work',
-            'label' => 'LBL_OFFICE_PHONE',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'department',
-            'label' => 'LBL_DEPARTMENT',
-          ),
-          1 => 
-          array (
             'name' => 'phone_mobile',
+            'comment' => 'Mobile phone number of the contact',
             'label' => 'LBL_MOBILE_PHONE',
           ),
         ),
@@ -136,22 +105,11 @@ array (
         ),
         4 => 
         array (
-          0 => 
-          array (
-            'name' => 'account_name',
-            'label' => 'LBL_ACCOUNT_NAME',
-            'displayParams' => 
-            array (
-              'enableConnectors' => true,
-              'module' => 'Contacts',
-              'connectors' => 
-              array (
-              ),
-            ),
-          ),
+          0 => 'department',
           1 => 
           array (
             'name' => 'phone_fax',
+            'comment' => 'Contact fax number',
             'label' => 'LBL_FAX_PHONE',
           ),
         ),
@@ -159,22 +117,16 @@ array (
         array (
           0 => 
           array (
-            'name' => 'primary_address_street',
-            'label' => 'LBL_PRIMARY_ADDRESS',
-            'type' => 'address',
+            'name' => 'account_name',
             'displayParams' => 
             array (
-              'key' => 'primary',
-            ),
-          ),
-          1 => 
-          array (
-            'name' => 'alt_address_street',
-            'label' => 'LBL_ALTERNATE_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'alt',
+              'key' => 'billing',
+              'copy' => 'primary',
+              'billingKey' => 'primary',
+              'additionalFields' => 
+              array (
+                'phone_office' => 'phone_work',
+              ),
             ),
           ),
         ),
@@ -182,29 +134,47 @@ array (
         array (
           0 => 
           array (
-            'name' => 'weather_info_c',
-            'studio' => 'visible',
-            'label' => 'LBL_WEATHER_INFO',
+            'name' => 'primary_address_street',
+            'hideLabel' => true,
+            'type' => 'address',
+            'displayParams' => 
+            array (
+              'key' => 'primary',
+              'rows' => 2,
+              'cols' => 30,
+              'maxlength' => 150,
+            ),
           ),
           1 => 
           array (
-            'name' => 'email1',
-            'studio' => 'false',
-            'label' => 'LBL_EMAIL_ADDRESS',
+            'name' => 'alt_address_street',
+            'hideLabel' => true,
+            'type' => 'address',
+            'displayParams' => 
+            array (
+              'key' => 'alt',
+              'copy' => 'primary',
+              'rows' => 2,
+              'cols' => 30,
+              'maxlength' => 150,
+            ),
           ),
         ),
         7 => 
         array (
           0 => 
           array (
-            'name' => 'description',
-            'comment' => 'Full text of the note',
-            'label' => 'LBL_DESCRIPTION',
+            'name' => 'email1',
+            'studio' => 'false',
+            'label' => 'LBL_EMAIL_ADDRESS',
           ),
-          1 => 
+        ),
+        8 => 
+        array (
+          0 => 
           array (
-            'name' => 'fullname_c',
-            'label' => 'LBL_FULLNAME',
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
           ),
         ),
       ),
@@ -241,11 +211,7 @@ array (
         ),
         2 => 
         array (
-          0 => 
-          array (
-            'name' => 'campaign_name',
-            'label' => 'LBL_CAMPAIGN',
-          ),
+          0 => 'campaign_name',
         ),
       ),
       'LBL_PANEL_ASSIGNMENT' => 
@@ -256,21 +222,6 @@ array (
           array (
             'name' => 'assigned_user_name',
             'label' => 'LBL_ASSIGNED_TO_NAME',
-          ),
-          1 => 
-          array (
-            'name' => 'date_modified',
-            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
-            'label' => 'LBL_DATE_MODIFIED',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'date_entered',
-            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
-            'label' => 'LBL_DATE_ENTERED',
           ),
         ),
       ),
