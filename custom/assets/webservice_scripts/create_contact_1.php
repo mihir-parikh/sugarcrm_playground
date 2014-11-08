@@ -50,7 +50,7 @@ $session_id = $login_result->id;
 //Create a contact
 $set_entry_parameters = array(
     "session" => $session_id,
-    "module_name" => "Accounts",
+    "module_name" => "Contacts",
     "name_value_list" => array(
         array("name" => "last_name", "value" => "Rest last name"), 
         array("name" => "day_time_contact_c", "value" => "11111111"),
