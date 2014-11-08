@@ -3,37 +3,13 @@
 /* 
  * Script to create a contact record using rest api.
  */
+include_once 'GenericWebService.php';
+$generic_webservice = new GenericWebService();
+
 include_once '../../custom_config/custom_config.php';
 $url = SUGAR_SITE_URL . "service/v4_1/rest.php";
 $username = SUGAR_WEBSERVICE_USER;
 $password = SUGAR_WEBSERVICE_PASSWORD;
-
-//Function to make cURL request
-function call($method, $parameters, $url){
-    $ch = curl_init();
-    
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
-    
-    $json_encoded_data = json_encode($parameters);
-    
-    $post = array(
-        "method" => $method,
-        "input_type" => "JSON",
-        "response_type" => "JSON",
-        "rest_data" => $json_encoded_data
-    );
-    
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    $response = json_decode($result);
-    
-    return $response;
-}
 
 //Log in
 $login_parameters = array(
@@ -44,7 +20,7 @@ $login_parameters = array(
     )
 );
 
-$login_result = call("login", $login_parameters, $url);
+$login_result = $generic_webservice->call("login", $login_parameters, $url);
 $session_id = $login_result->id;
 
 //Create a contact
@@ -58,7 +34,7 @@ $set_entry_parameters = array(
     )
 );
 
-$set_entry_result = call("set_entry", $set_entry_parameters, $url);
+$set_entry_result = $generic_webservice->call("set_entry", $set_entry_parameters, $url);
 
 echo "New record created: " . $set_entry_result->id;
 ?>
