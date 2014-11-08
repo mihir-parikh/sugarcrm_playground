@@ -14,4 +14,7 @@ $hook_array["before_save"][] = Array(3, "Assign contacts to the same user", "cus
 
 //$hook_array["before_delete"] = Array();
 //$hook_array["before_delete"][] = Array(1, "Notify the manager on delete", "custom/modules/Accounts/AccountHooks.php", "AccountHooks", "notify_on_delete");
+
+$hook_array["process_record"] = Array();
+$hook_array["process_record"][] = Array(1, "Change the name column color", "custom/modules/Accounts/AccountHooks.php", "AccountHooks", "custom_name_color");
 ?>

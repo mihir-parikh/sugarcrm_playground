@@ -63,4 +63,8 @@ class AccountHooks {
             }
         }        
     }
+    
+    public function custom_name_color($bean, $event, $arguments){
+        $bean->name = "<span style='color:red;'>" . $bean->name . "</span>";
+    }
 }
