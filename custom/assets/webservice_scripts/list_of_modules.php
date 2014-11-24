@@ -34,3 +34,17 @@ echo "List of modules available: <br />";
 echo "<pre>";
 print_r($get_available_modules_result);
 echo "</pre>";
+
+//Pull a list of fields available for the module
+$list_of_fields_parameters = array(
+    "session" => $session_id, 
+    "module_name" => "Contacts"
+);
+
+$list_of_fields_result = $generic_webservice->call("get_module_fields", $list_of_fields_parameters, $url);
+
+echo "<br />List of Contacts fields: <br />";
+echo "<pre>";
+print_r($list_of_fields_result);
+echo "</pre>";
+?>
