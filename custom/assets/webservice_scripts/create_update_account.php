@@ -34,5 +34,24 @@ $set_entry_parameters = array(
 );
 
 $set_entry_result = $generic_webservice->call("set_entry", $set_entry_parameters, $url);
+$account_id = $set_entry_result->id;
+
+$update_account_parameters = array(
+    "session" => $session_id, 
+    "module_name" => "Accounts", 
+    "name_value_list" => array(
+        array(
+            "name" => "id", 
+            "value" => $account_id
+        ), 
+        array(
+            "name" => "name", 
+            "value" => "account_1125y"
+        )
+    )
+);
+
+$update_account_result = $generic_webservice->call("set_entry", $update_account_parameters, $url);
+echo "The updated organisation name is: " . $update_account_result->entry_list->name->value;
 ?>
 
