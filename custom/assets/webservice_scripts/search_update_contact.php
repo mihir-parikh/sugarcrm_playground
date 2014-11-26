@@ -25,8 +25,8 @@ $session_id = $login_result->id;
 $get_entry_list_parameters = array(
     "session" => $session_id, 
     "module_name" => "Contacts", 
-    "query" => "last_name = 'name2'"
+    "query" => "contacts.last_name = 'name2'"
 );
 
 $get_entry_result = $generic_webservice->call("get_entry_list", $get_entry_list_parameters, $url);
-var_dump($get_entry_result);
+$contact_id = $get_entry_result->entry_list[0]->id;
