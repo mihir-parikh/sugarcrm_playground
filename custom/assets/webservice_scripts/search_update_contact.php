@@ -30,3 +30,39 @@ $get_entry_list_parameters = array(
 
 $get_entry_result = $generic_webservice->call("get_entry_list", $get_entry_list_parameters, $url);
 $contact_id = $get_entry_result->entry_list[0]->id;
+
+//Edit the address
+$set_entry_parameters = array(
+    "session" => $session_id, 
+    "module_name" => "Contacts", 
+    "name_value_list" => array(
+        array(
+            "name" => "id", 
+            "value" => $contact_id
+        ), 
+        array(
+            "name" => "primary_address_street", 
+            "value" => "Street"
+        ), 
+        array(
+            "name" => "primary_address_city", 
+            "value" => "City"
+        ), 
+        array(
+            "name" => "primary_address_state", 
+            "value" => "State"
+        ),
+        array(
+            "name" => "primary_address_postalcode", 
+            "value" => "0000"
+        ),
+        array(
+            "name" => "primary_address_country", 
+            "value" => "Country"
+        )
+    )
+);
+
+$set_entry_result = $generic_webservice->call("set_entry", $set_entry_parameters, $url);
+echo "Contact address has been successfully updated.";
+?>
